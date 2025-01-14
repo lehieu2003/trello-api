@@ -20,7 +20,7 @@ const START_SERVER = () => {
   })
 
   exitHook(() => {
-    console.log('4. Closing MongoDB connection...')
+    console.log('4. Server is shutting down...')
     CLOSE_DB()
     console.log('5. MongoDB connection closed')
   })

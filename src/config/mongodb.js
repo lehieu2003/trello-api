@@ -1,11 +1,3 @@
-// lehieunghiahanh76
-// X0PwaR0O7dYMoBo4
-
-// const MONGODB_URI =
-//   'mongodb+srv://lehieunghiahanh76:X0PwaR0O7dYMoBo4@cluster0-trello.snn3t.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0-Trello'
-
-// const DATABASE_NAME = 'trello-web'
-
 import { MongoClient, ServerApiVersion } from 'mongodb'
 import { env } from '~/config/environment'
 
