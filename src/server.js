@@ -1,5 +1,6 @@
 import express from 'express'
-import { CONNECT_DB, GET_DB } from '~/config/mongodb'
+import exitHook from 'async-exit-hook'
+import { CONNECT_DB, GET_DB, CLOSE_DB } from '~/config/mongodb'
 
 const START_SERVER = () => {
   const app = express()
@@ -17,6 +18,12 @@ const START_SERVER = () => {
     console.log(
       `3. Hello Trung Quan Dev, I am running at ${hostname} and port ${port}`
     )
+  })
+
+  exitHook(() => {
+    console.log('4. Closing MongoDB connection...')
+    CLOSE_DB()
+    console.log('5. MongoDB connection closed')
   })
 }
 

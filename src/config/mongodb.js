@@ -20,11 +20,16 @@ const mongoClientInstance = new MongoClient(MONGODB_URI, {
   }
 })
 export const CONNECT_DB = async () => {
-  // goi ket not toi MongoDB Atlas voi MONGODB_URI da khai bap trng than cua mongoClientInstance
+  // goi ket not toi MongoDB Atlas voi MONGODB_URI da khai bao trong than cua mongoClientInstance
   await mongoClientInstance.connect()
 
   // ket noi thanh cong thi lay ra DB theo ten va gan nguoc lai vao bien trelloDatabaseInstance
   trelloDatabaseInstance = mongoClientInstance.db(DATABASE_NAME)
+}
+
+//  close ket noi toi MongoDB
+export const CLOSE_DB = async () => {
+  await mongoClientInstance.close()
 }
 
 export const GET_DB = () => {
@@ -33,3 +38,5 @@ export const GET_DB = () => {
   }
   return trelloDatabaseInstance
 }
+
+
