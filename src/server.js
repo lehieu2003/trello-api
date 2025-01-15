@@ -1,21 +1,22 @@
 import express from 'express'
 import exitHook from 'async-exit-hook'
-import { CONNECT_DB, GET_DB, CLOSE_DB } from '~/config/mongodb'
+import { CONNECT_DB, CLOSE_DB } from '~/config/mongodb'
 import { env } from '~/config/environment'
+import { APIs_V1 } from '~/routes/v1/index'
 
 const START_SERVER = () => {
   const app = express()
 
+  // enable json body parser (json data)
+  app.use(express.json())
 
-  app.get('/', async (req, res) => {
-    console.log(await GET_DB().listCollections().toArray())
-    res.end('<h1>Hello Trung Quan Dev</h1><hr>')
-  })
+  // use api v1
+  app.use('/v1', APIs_V1)
 
   app.listen(env.APP_PORT, env.APP_HOST, () => {
     // eslint-disable-next-line no-console
     console.log(
-      `3. Hello Trung Quan Dev, I am running at ${env.APP_HOST} and port ${env.APP_PORT}`
+      `3. Hello hieu, I am running at ${env.APP_HOST} and port ${env.APP_PORT}`
     )
   })
 
